@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head> 
+<body>
+<div class="body">
+    <nav class="side_navbar">
+        <div class="logo">
+            <h1>Money Tracker</h1>
+            <p>Track Your Money</p>
+        </div>
+        <div class="nav_links">
+            <a href="/data" class="nav_link">
+                <img src="images/dashboard.png" alt="Dashboard">
+                <p>Dashboard</p>
+            </a>
+            <a href="/" class="nav_link">
+                <img src="images/incomes.png" alt="Incomes">
+                <p>Incomes</p>
+            </a>
+            <a href="/Expenses" class="nav_link">
+                <img src="images/expenses.png" alt="Expenses">
+                <p>Expenses</p>
+            </a>
+        </div>
+    </nav>
+    <% let totalexpense=0;%>
+    <% for(var i=0; i<list2.length; i++){%>
+    <% totalexpense=totalexpense+list2[i].amount %>
+    <% } %>
+    <main class="content">
+        <div class="main_heading">
+            <h1>Expenses</h1>
+        </div>
+        <div class="total_income">
+            <h2>Total Expense : <p class="expense_amount"> &dollar; <%= totalexpense%>
+                </p>
+            </h2>
+        </div>
+        <div class="form_and_data">
+            <div class="form">
+                <form action="http://localhost:3000/Expenses" method="post">
+                    <input type="text" name="title" id="title" placeholder="Expense Title" required>
+                    <input type="number" name="amount" id="amount" placeholder="Expense Amount" required>
+                    <input type="text" name="date" id="date" placeholder="Enter A Date"
+                    onfocus="(this.type = 'date')" required>
+                    <select name="expensetype" id="expensetype" required>
+                        <option name="" value="0">Select Option</option>
+                        <option name="education" value="Education">Education</option>
+                        <option name="groceries" value="Groceries">Groceries</option>
+                        <option name="health" value="Health">Health</option>
+                        <option name="travelling" value="Travelling">Travelling</option>
+                        <option name="other" value="Other">Other</option>
+                    </select>
+                    <textarea name="reference" id="reference" cols="30" rows="3"
+                    placeholder="Add A Reference" required></textarea>
+                    <button type="submit"> &plus; Add Expenses</button>
+                </form>
+            </div>
+            <div class="content_data">
+                <table>
+                    <tbody>
+                        <% for(var i=0; i<list2.length; i++){%>
+                            <tr class="content_div">
+                                <td>
+                                    <div class="content_data_type_img">
+                                    <% if(list2[i].expensetype=="Education" ){%>
+                                        <img src="images/education.png">
+                                    <%}else if(list2[i].expensetype=="Groceries" ){%>
+                                        <img src="images/shopping.png">
+                                    <%}else if(list2[i].expensetype=="Health" ){%>
+                                        <img src="images/health.png">
+                                    <%}else if(list2[i].expensetype=="Travelling" ){%>
+                                        <img src="images/travel.png">
+                                    <%}else if(list2[i].expensetype=="Other" ){%>
+                                        <img src="images/expenses.png">
+                                    <%} %>
+                                </div>
+                                </td>
+                                <td class="main_content">
+                                    <div>
+                                        <div class="content_data_title">
+                                            <div class="red_dot"></div>
+                                            <h2>
+                                                <%= list2[i].title%>
+                                            </h2>
+                                        </div>
+                                        <div class="content_data_div">
+                                            <div class="content_data_amount">
+                                                <h2>
+                                                    &dollar; <%= list2[i].amount%>
+                                                </h2>
+                                            </div>
+                                            <div class="content_data_date">
+                                                <img src="images/calender.png">
+                                                <h2>
+                                                    <%= list2[i].date.toLocaleDateString()%>
+                                                </h2>
+                                            </div>
+                                            <div class="content_data_reference">
+                                                <img src="images/reference.png">
+                                                <h2>
+                                                    <%= list2[i].reference%>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="delete_img">
+                                        <a href="/delete-expenses/<%= list2[i]._id%>">
+                                            <img src="images/bin.png"  alt="">
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                       <% }
+                        %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>                
+</div>
+</body>
+</html>

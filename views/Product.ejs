@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="body">
+    <nav class="side_navbar">
+        <div class="logo">
+            <h1>Money Tracker</h1>
+            <p>Track Your Money</p>
+        </div>
+        <div class="nav_links">
+            <a href="/data" class="nav_link">
+                <img src="images/dashboard.png" alt="Dashboard">
+                <p>Dashboard</p>
+            </a>
+            <a href="/" class="nav_link">
+                <img src="images/incomes.png" alt="Incomes">
+                <p>Incomes</p>
+            </a>
+            <a href="/Expenses" class="nav_link">
+                <img src="images/expenses.png" alt="Expenses">
+                <p>Expenses</p>
+            </a>
+        </div>
+    </nav>
+    <% let totalIncome=0;%>
+    <% for(var i=0; i<list1.length; i++){%>
+    <% totalIncome=totalIncome+list1[i].amount %>
+    <% } %>
+    <% let totalexpenses=0;%>
+    <% for(var i=0; i<list2.length; i++){%>
+    <% totalexpenses=totalexpenses+list2[i].amount %>
+    <% } %>
+    <main class="content">
+        <div class="highlights">
+            <div class="chart">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="numbers">
+                <div class="income_box">
+                    <p>Incomes</p> 
+                    <h2>&dollar; <%= totalIncome%></h2>
+                </div>
+                <div class="expense_box">
+                     <p>Expenses</p> 
+                     <h2>&dollar; <%= totalexpenses%></h2> 
+                </div>
+                <div class="revenue_box">
+                    <p>Revenue</p>
+                    <% if(totalIncome>totalexpenses){%>
+                        <h2 style="color: rgb(36, 129, 36);">
+                           &dollar; <%= totalIncome - totalexpenses%>
+                        </h2>
+                    <%}else{%>
+                        <h2 style="color: rgb(195, 18, 18);">
+                           &dollar; <%= totalIncome - totalexpenses%>
+                        </h2>
+                    <%} %>
+                </div>
+            </div>
+        </div>
+        <div class="income_and_expense_data">
+        <div class="incomes_data">
+            <div class="incomes_data_heading">
+                <img src="images/incomes.png" alt="">
+                <h1>Incomes Data Here...</h1>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for(var i=0; i<list1.length; i++){%>
+                    <tr>
+                        <td>
+                            <%= list1[i].date.toLocaleDateString()%>
+                        </td>
+                        <td>
+                            <%= list1[i].title%>
+                        </td>
+                        <td>
+                          &dollar;  <%= list1[i].amount%>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="expense_data">
+            <div class="expense_data_heading">
+                <img src="images/expenses.png" alt="">
+                <h1>Expense Data Here...</h1>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for(var i=0; i<list2.length; i++){%>
+                    <tr>
+                        <td>
+                            <%= list2[i].date.toLocaleDateString()%>
+                        </td>
+                        <td>
+                            <%= list2[i].title%>
+                        </td>
+                        <td>
+                          &dollar;  <%= list2[i].amount%>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Income',
+                'Expenses',
+                'Revenue'
+            ],
+            datasets: [{
+                data: [<%= totalIncome %>, <%= totalexpenses %>,<%= totalIncome - totalexpenses %>],
+                backgroundColor: [
+                    'rgb(130, 58, 182)',
+                    'rgb(234, 82, 27)',
+                    'rgb(222, 54, 158)'
+                ],
+                hoverOffset: 4
+            }]
+                }
+            });
+</script>
+</body>
+</html>

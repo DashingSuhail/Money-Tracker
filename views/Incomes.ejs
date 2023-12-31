@@ -1,0 +1,128 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incomes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+<div class="body">
+    <nav class="side_navbar">
+        <div class="logo">
+            <h1>Money Tracker</h1>
+            <p>Track Your Money</p>
+        </div>
+        <div class="nav_links">
+            <a href="/data" class="nav_link">
+                <img src="images/dashboard.png" alt="Dashboard">
+                <p>Dashboard</p>
+            </a>
+            <a href="/" class="nav_link">
+                <img src="images/incomes.png" alt="Incomes">
+                <p>Incomes</p>
+            </a>
+            <a href="/Expenses" class="nav_link">
+                <img src="images/expenses.png" alt="Expenses">
+                <p>Expenses</p>
+            </a>
+        </div>
+    </nav>
+    <% let totalIncomed=0;%>
+    <% for(var i=0; i<list1.length; i++){%>
+    <% totalIncomed=totalIncomed+list1[i].amount %>
+    <% } %>
+    <main class="content">
+        <div class="main_heading">
+            <h1>Incomes</h1>
+        </div>
+        <div class="total_income">
+            <h2>Total Income : <p class="income_amount"> &dollar; <%= totalIncomed%></p>
+            </h2>
+        </div>
+            <div class="form_and_data">
+                <div class="form">
+                    <form action="http://localhost:3000/Incomes" method="post">
+                        <input type="text" name="title" id="title" placeholder="Salary Title" required>
+                        <input type="number" name="amount" id="amount" placeholder="Salary Amount"  required>
+                        <input type="text" name="date" id="date" placeholder="Enter A Date"
+                        onfocus="(this.type = 'date')" required>
+                        <select name="salarytype" id="salarytype" required>
+                            <option name="" value="0">Select Option</option>
+                            <option name="freelance" value="Freelance">Freelance</option>
+                            <option name="youtube" value="Youtube">Youtube</option>
+                            <option name="shopify" value="Shopify">Shopify</option>
+                            <option name="developer" value="Developer">Developer Salary</option>
+                            <option name="other" value="Other">Other</option>
+                        </select>
+                        <textarea name="reference" id="reference" cols="30" rows="3"
+                        placeholder="Add A Reference" required></textarea>
+                        <button type="submit">&plus; Add Incomes</button>
+                    </form>
+                </div>
+                <div class="content_data">
+                <table>
+                    <tbody>
+                    <% for(var i=0; i<list1.length; i++){%>
+                    <tr class="content_div">
+                        <td>
+                            <div class="content_data_type_img">
+                                <% if(list1[i].salarytype=="Freelance" ){%>
+                                    <img src="images/freelance.jpeg">
+                                <%}else if(list1[i].salarytype=="Youtube" ){%>
+                                    <img src="images/youtube.png">
+                                <%}else if(list1[i].salarytype=="Shopify" ){%>
+                                    <img src="images/shopify.png">
+                                 <%}else if(list1[i].salarytype=="Developer" ){%>
+                                    <img src="images/developer.png">
+                                <%}else if(list1[i].salarytype=="Other" ){%>
+                                    <img src="images/incomes.png">
+                               <%} %>
+                            </div>
+                        </td>
+                        <td class="main_content">
+                            <div>
+                                <div class="content_data_title">
+                                    <div class="green_dot"></div>
+                                    <h2>
+                                        <%= list1[i].title%>
+                                    </h2>
+                                </div>
+                                <div class="content_data_div">
+                                    <div class="content_data_amount">
+                                        <h2>
+                                            &dollar; <%= list1[i].amount%>
+                                        </h2>
+                                    </div>
+                                    <div class="content_data_date">
+                                        <img src="images/calender.png">
+                                        <h2>
+                                            <%= list1[i].date.toLocaleDateString()%>
+                                        </h2>
+                                    </div>
+                                    <div class="content_data_reference">
+                                        <img src="images/reference.png">
+                                        <h2>
+                                            <%= list1[i].reference%>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="delete_img">
+                                <a href="/delete-incomes/<%= list1[i]._id%>">
+                                    <img src="images/bin.png"  alt="">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+
+</html>
