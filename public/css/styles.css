@@ -1,0 +1,433 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Whole Body Starts*/
+
+.body {
+  background-color: #fd9f5e;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+/* SIdeNavbar Starts*/
+.side_navbar {
+  min-height: 90vh;
+  background-color: rgba(255, 228, 200, 0.68);
+  margin: 5vh;
+  max-width: 20vw;
+  width: 100%;
+  border: 2px solid white;
+  border-radius: 15px;
+}
+
+/*Sidebar Logo*/
+.logo {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 25px;
+  font-family: cursive;
+  letter-spacing: -1px;
+  color: #af1104;
+}
+
+.logo p {
+  font-size: 15px;
+  font-family: sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #978c8c;
+}
+
+/* Sidebar links*/
+.nav_links {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.nav_link {
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0;
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.nav_link:hover {
+  border-left: 2px solid #af1104;
+}
+
+.nav_link img {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid white;
+}
+
+.nav_link p {
+  align-self: center;
+  margin-left: 10px;
+  color: #af1104;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/*Main Content STarts*/
+.content {
+  margin: 5vh 5vh 5vh 0;
+  max-width: 80vw;
+  width: 100%;
+  background-color: rgba(255, 228, 200, 0.68);
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.main_heading h1 {
+  font-family: sans-serif;
+  font-size: 25px;
+  letter-spacing: -0.5px;
+  color: #af1104;
+}
+
+/*Total amount container*/
+.income_amount {
+  color: rgb(17, 162, 17);
+  display: inline;
+  font-family: cursive;
+}
+
+.total_income h2 {
+  font-size: 20px;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 11px;
+  color: #af1104;
+  background-color: white;
+  margin: 10px 0;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.expense_amount {
+  color: rgb(230, 33, 33);
+  display: inline;
+  font-family: cursive;
+}
+
+/* Whole Forms and Data container */
+.form_and_data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/*Form Starts*/
+.form {
+  width: 35%;
+  /* min-height: 55vh; */
+  /* height: 100%; */
+}
+
+.form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form form input,
+select,
+textarea {
+  font-family: sans-serif;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid white;
+  margin-bottom: 20px;
+  background: none;
+  border-radius: 3px;
+  outline: none;
+  resize: none;
+  color: gray;
+}
+
+.form form select {
+  width: 50%;
+  text-align: center;
+  align-self: self-end;
+  color: gray;
+}
+
+.form form button {
+  width: fit-content;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  background-color: #af1104;
+  color: white;
+  border: none;
+  font-family: sans-serif;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.form form button:hover {
+  scale: 1.01;
+}
+
+/* Data Shows here*/
+.content_data {
+  width: 63%;
+}
+
+.content_data table {
+  width: 100%;
+  font-family: sans-serif;
+  color: #af1104;
+}
+
+.content_data table tbody tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content_div {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.content_div:hover {
+ scale: 1.01;
+}
+
+.content_data_type_img img {
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.main_content {
+  width: 80%;
+}
+
+.content_data_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.content_data_title h2 {
+  margin-left: 15px;
+  font-size: 18px;
+  letter-spacing: -0.75px;
+}
+
+.green_dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgb(17, 162, 17);
+}
+
+.red_dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: rgb(230, 33, 33);
+}
+
+.content_data_amount {
+  font-family: cursive;
+  font-size: 11px;
+  margin-right: 10px;
+  min-width: 70px;
+}
+
+.content_data_date,
+.content_data_reference {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content_data_date img,
+.content_data_reference img {
+  width: 20px;
+  height: 20px;
+  margin: 0 10px;
+}
+
+.content_data_date h2 {
+  font-size: 16px;
+}
+
+.content_data_reference h2 {
+  font-size: 16px;
+}
+
+.content_data_div {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2px;
+  align-items: center;
+}
+
+.delete_img a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Dashboard Design*/
+.highlights {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/*Chart*/
+.chart canvas{
+  height: 375px;
+  margin: 10 auto;
+}
+
+/* Data Boxes */
+.numbers {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.income_box,
+.expense_box,
+.revenue_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 100px;
+  margin: 10px auto;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  border: 2px solid white;
+}
+
+.income_box:hover,
+.expense_box:hover,
+.revenue_box:hover {
+  scale: 1.01;
+  opacity: 0.8;
+}
+
+.income_box h2,
+.expense_box h2,
+.revenue_box h2 {
+  font-family: cursive;
+  letter-spacing: 0px;
+}
+
+.income_box {
+  background-image: linear-gradient(rgb(179, 109, 229), rgb(130, 58, 182));
+  background-color: rgb(179, 109, 229);
+}
+
+.expense_box {
+  background-image: linear-gradient(rgb(238, 133, 95), rgb(234, 82, 27));
+  background-color: rgb(255, 126, 79);
+}
+
+.revenue_box {
+  background-image: linear-gradient(rgb(209, 141, 153), rgb(222, 54, 158));
+  background-color: rgb(246, 179, 190);
+}
+
+/* Incomes and Expense data charts*/
+.income_and_expense_data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.incomes_data,
+.expense_data {
+  width: 48%;
+  font-family: sans-serif;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+
+.incomes_data:hover,
+.expense_data:hover {
+  scale: 1.01;
+}
+
+.incomes_data_heading,
+.expense_data_heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.incomes_data_heading img,
+.expense_data_heading img {
+  height: 35px;
+  width: 40px;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin-right: 10px;
+}
+
+.incomes_data_heading h1,
+.expense_data_heading h1 {
+  color: #af1104;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.75px;
+}
+
+.incomes_data table,
+.expense_data table {
+  width: 100%;
+  text-align: left;
+  font-family: cursive;
+  color: #404040;
+}
+
+.incomes_data table thead,
+.expense_data table thead {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: sans-serif;
+  color: #af1104;
+}
+
+.incomes_data table tbody tr :nth-child(2),
+.expense_data table tbody tr :nth-child(2) {
+  font-family: sans-serif;
+}
